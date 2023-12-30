@@ -2,7 +2,7 @@
 #include <string.h>
 
 int check_fl (int argc, char *argv[0]);
-int ouptput_b (int argc, char *argv[0]);
+int output_b (int argc, char *argv[0]);
 int output_n (int argc, char *argv[0]);
 int output_without (int argc, char *argv[0]);
 
@@ -14,6 +14,9 @@ int main (int argc, char *argv[0]) {
     }
     else if (pN == 0) {
       output_without (argc, &argv[0]);
+    }
+    else if (pN == 2){
+        output_b (argc, &argv[0]);
     }
     return 0;
 }
@@ -44,6 +47,14 @@ int output_n (int argc, char *argv[0]){
     }
     fclose (myfile);
     return 0;
+}
+
+int output_b (int argc, char *argv[0]){
+    FILE *myfile;
+    char str[51];
+    int i = 0;
+    myfile = fopen(argv[argc - 1], "r");
+    i = 1;
 }
 
 int output_without (int argc, char *argv[0]){
