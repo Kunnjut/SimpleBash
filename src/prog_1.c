@@ -52,10 +52,29 @@ int output_n (int argc, char *argv[0]){
 int output_b (int argc, char *argv[0]){
     FILE *myfile;
     char str[51];
-    int i = 0;
+    int i = 0, k = 1;
     myfile = fopen(argv[argc - 1], "r");
-    i = 1;
+        while ((str[i] = fgetc(myfile)) != EOF) {
+        if ((i != 0) && str[i] == '\n') {
+            str[i] = '\0';
+            printf ("     %d  %s\n",k, str);
+            k++;
+            i = 0;
+
+        }
+        else if ((i == 0) && str[i] == '\n'){
+            str[i] = '\0';
+            printf ("%s\n", str);
+            i = 0;
+        }
+        else {
+            i++;
+        }
+    }
+    fclose(myfile);
+    return 0;
 }
+
 
 int output_without (int argc, char *argv[0]){
     FILE *myfile;
