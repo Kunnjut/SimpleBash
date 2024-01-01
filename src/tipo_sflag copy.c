@@ -12,6 +12,9 @@ int main (int argc, char *argv[0]){
             k = 0;
             i = 0;
         }
+        else if (i == 0 && str[i] == EOF && k == 0){
+            printf("\n");
+        }
         else if (i == 0 && str[i] != '\n' && k == 0){
             printf ("\n");
             k = 1;

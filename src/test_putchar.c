@@ -8,17 +8,8 @@ int main (int argc, char *argv[0]){
     int i = 0, k = 1;
     myfile = fopen(argv[argc - 1], "r");
         while ((str[i] = fgetc(myfile)) != EOF) {
-        if ((i != 0) && str[i] == '\n') {
-            str[i] = '\0';
-            printf ("     %d  %s\n",k, str);
-            k++;
-            i = 0;
-
-        }
-        else if ((i == 0) && str[i] == '\n'){
-            str[i] = '\0';
-            printf ("%s\n", str);
-            i = 0;
+        if ((i == 0) && str[i] == '\n') {
+            str[i] = fgetc(myfile);
         }
         else {
             i++;
