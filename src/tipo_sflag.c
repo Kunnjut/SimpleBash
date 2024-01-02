@@ -7,8 +7,13 @@ int main (int argc, char *argv[0]){
     char str[51];
     int i = 0, k = 1;
     myfile = fopen(argv[argc - 1], "r");
-    while ((str[i] = fgetc(myfile)) != EOF) {
-        if ((i == 0) && str[i] == '\n'){
+    while ((str[i] = fgetc(myfile))) {
+        if (str[i] == EOF){
+            str[i] = '\0';
+            printf ("%s",str);
+            break;
+        }
+        else if ((i == 0) && str[i] == '\n'){
             k = 0;
             i = 0;
         }
@@ -29,6 +34,9 @@ int main (int argc, char *argv[0]){
             i = 0;
         }
     }
+        if (k == 0){
+            printf ("\n");
+        }
 
     fclose(myfile);
     return 0;
