@@ -61,9 +61,16 @@ int output_b (int argc, char *argv[0]){
     char str[51];
     int i = 0, k = 1;
     myfile = fopen(argv[argc - 1], "r");
-        while ((str[i] = fgetc(myfile)) != EOF) {
-        if (str[i] == EOF){
-            
+        while ((str[i] = fgetc(myfile))) {
+        if (str[i] == EOF && i == 0){
+            str[i] = '\0';
+            printf ("%s", str);
+            break;
+        }
+        else if (str[i] == EOF && i != 0){
+            str[i] = '\0';
+            printf ("     %d  %s",k, str);
+            break;
         }
         else if ((i != 0) && str[i] == '\n') {
             str[i] = '\0';
