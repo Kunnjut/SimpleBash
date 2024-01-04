@@ -9,6 +9,7 @@ int output_n (int argc, char *argv[0]);
 int output_s (int argc, char *argv[0]);
 int output_v (int argc, char *argv[0]);
 int output_e (int argc, char *argv[0]);
+int output_t (int argc, char *argv[0]);
 int output_without (int argc, char *argv[0]);
 
 int check_fl (int argc, char *argv[0]) {
@@ -27,6 +28,9 @@ int check_fl (int argc, char *argv[0]) {
     }
     else if ((argc > 2) && (strcmp(argv[1], "-e")  == 0)){
         check = 5;
+    }
+    else if ((argc > 2) && (strcmp(argv[1], "-t")  == 0)){
+        check = 6;
     }
     else{
         check = 0;
@@ -189,6 +193,42 @@ int output_e (int argc, char *argv[0]){
         }
         else if (str[i] == 9){
             printf ("\t");
+        }
+        else if (str[i] == 32){
+            printf (" ");
+        }
+        else if (str[i] < 32){
+            printf ("^%c",str[i] + 64);
+        }
+        else if (str[i] > 127 && str[i] < 160){
+            printf ("^%c",str[i] - 64);
+        }
+        else if (str[i] == 127){
+            printf ("%c", str[i] - 64);
+        }
+         else if (str[i] >= 65 && str[i] <= 122){
+            printf ("%c", str[i]);
+        }
+    }
+    fclose(myfile);
+    return 0;
+}
+
+int output_t (int argc, char *argv[0]){
+    FILE *myfile;
+    char str[51];
+    int i = 0;
+    myfile = fopen(argv[argc - 1], "r");
+    while ((str[i] = fgetc(myfile))) {
+        if (str[i] == EOF){
+            //printf ("aaa%c", str[i]);
+            break;
+        }
+        else if (str[i] == 10){
+            printf ("\n");
+        }
+        else if (str[i] == 9){
+            printf ("^I");
         }
         else if (str[i] == 32){
             printf (" ");

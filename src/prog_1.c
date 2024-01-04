@@ -31,6 +31,9 @@ int main (int argc, char *argv[0]) {
     else if (pN == 5){
         output_e (argc, &argv[0]);
     }
+    else if (pN == 6){
+        output_t (argc, &argv[0]);
+    }
     return 0;
 }
 
