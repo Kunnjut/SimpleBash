@@ -1,40 +1,17 @@
-#include <stdio.h>
+#ifndef PROG_1_H
+#define PROG_1_H
 #include <string.h>
-#include "prog_1.h"
+#include <stdio.h>
 
-/*int check_fl (int argc, char *argv[0]);
+int check_fl (int argc, char *argv[0]);
 int output_b (int argc, char *argv[0]);
 int output_n (int argc, char *argv[0]);
 int output_s (int argc, char *argv[0]);
 int output_v (int argc, char *argv[0]);
 int output_e (int argc, char *argv[0]);
-int output_without (int argc, char *argv[0]);*/
+int output_without (int argc, char *argv[0]);
 
-int main (int argc, char *argv[0]) {
-    int i = 0, pN;
-    pN = check_fl (argc, &argv[0]);
-    if (pN == 1){
-       output_n (argc, &argv[0]);
-    }
-    else if (pN == 0) {
-      output_without (argc, &argv[0]);
-    }
-    else if (pN == 2){
-        output_b (argc, &argv[0]);
-    }
-    else if (pN == 3){
-        output_s (argc, &argv[0]);
-    }
-    else if (pN == 4){
-        output_v (argc, &argv[0]);
-    }
-    else if (pN == 5){
-        output_e (argc, &argv[0]);
-    }
-    return 0;
-}
-
-/*int check_fl (int argc, char *argv[0]) {
+int check_fl (int argc, char *argv[0]) {
     int check;
     if ((argc > 2) && (strcmp(argv[1], "-n")  == 0)){
         check = 1;
@@ -231,4 +208,6 @@ int output_e (int argc, char *argv[0]){
     }
     fclose(myfile);
     return 0;
-}*/
+}
+
+#endif
