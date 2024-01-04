@@ -10,6 +10,8 @@ int output_s (int argc, char *argv[0]);
 int output_v (int argc, char *argv[0]);
 int output_e (int argc, char *argv[0]);
 int output_t (int argc, char *argv[0]);
+int output_be (int argc, char *argv[0]);
+int output_bt (int argc, char *argv[0]);
 int output_without (int argc, char *argv[0]);
 
 int check_fl (int argc, char *argv[0]) {
@@ -31,6 +33,12 @@ int check_fl (int argc, char *argv[0]) {
     }
     else if ((argc > 2) && (strcmp(argv[1], "-t")  == 0)){
         check = 6;
+    }
+    else if ((argc > 2) && (strcmp(argv[1], "-E")  == 0)){
+        check = 7;
+    }
+    else if ((argc > 2) && (strcmp(argv[1], "-T")  == 0)){
+        check = 8;
     }
     else{
         check = 0;
@@ -244,6 +252,61 @@ int output_t (int argc, char *argv[0]){
         }
          else if (str[i] >= 65 && str[i] <= 122){
             printf ("%c", str[i]);
+        }
+    }
+    fclose(myfile);
+    return 0;
+}
+
+int output_be (int argc, char *argv[0]){
+    FILE *myfile;
+    char str[51];
+    int i = 0;
+    myfile = fopen(argv[argc - 1], "r");
+        while ((str[i] = fgetc(myfile))) {
+        if (str[i] == EOF && i == 0){
+            str[i] = '\0';
+            printf ("%s", str);
+            break;
+        }
+        else if (str[i] == EOF && i != 0){
+            str[i] = '\0';
+            printf ("%s",str);
+            break;
+        }
+        else if ((i != 0) && str[i] == '\n') {
+            str[i] = '\0';
+            printf ("%s$\n",str);
+            i = 0;
+
+        }
+        else if ((i == 0) && str[i] == '\n'){
+            str[i] = '\0';
+            printf ("%s$\n", str);
+            i = 0;
+        }
+        else {
+            i++;
+        }
+    }
+    fclose(myfile);
+    return 0;
+}
+
+int output_bt (int argc, char *argv[0]){
+    FILE *myfile;
+    char str[51];
+    int i = 0;
+    myfile = fopen(argv[argc - 1], "r");
+    while ((str[i] = fgetc(myfile))) {
+        if (str[i] == EOF){
+            break;
+        }
+        else if (str[i] == 9){
+            printf ("^I");
+        }
+        else{
+            printf ("%c",str[i]);
         }
     }
     fclose(myfile);

@@ -24,5 +24,11 @@ int main (int argc, char *argv[0]) {
     else if (pN == 6){
         output_t (argc, &argv[0]);
     }
+    else if (pN == 7){
+        output_be (argc, &argv[0]);
+    }
+    else if (pN == 8){
+        output_bt (argc, &argv[0]);
+    }
     return 0;
 }
