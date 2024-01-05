@@ -156,7 +156,6 @@ int output_v (int argc, char *argv[0]){
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
         if (str[i] == EOF){
-            //printf ("aaa%c", str[i]);
             break;
         }
         else if (str[i] == 10){
@@ -189,7 +188,6 @@ int output_e (int argc, char *argv[0]){
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
         if (str[i] == EOF){
-            //printf ("%c", str[i]);
             break;
         }
         else if (str[i] == 10){
@@ -222,7 +220,6 @@ int output_t (int argc, char *argv[0]){
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
         if (str[i] == EOF){
-            //printf ("aaa%c", str[i]);
             break;
         }
         else if (str[i] == 10){
