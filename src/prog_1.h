@@ -171,9 +171,6 @@ int output_v (int argc, char *argv[0]){
         else if (str[i] < 32){
             printf ("^%c",str[i] + 64);
         }
-        else if (str[i] > 127 && str[i] < 160){
-            printf ("^%c",str[i] - 64);
-        }
         else if (str[i] == 127){
             printf ("%c", str[i] - 64);
         }
@@ -207,9 +204,6 @@ int output_e (int argc, char *argv[0]){
         else if (str[i] < 32){
             printf ("^%c",str[i] + 64);
         }
-        else if (str[i] > 127 && str[i] < 160){
-            printf ("^%c",str[i] - 64);
-        }
         else if (str[i] == 127){
             printf ("%c", str[i] - 64);
         }
@@ -242,9 +236,6 @@ int output_t (int argc, char *argv[0]){
         }
         else if (str[i] < 32){
             printf ("^%c",str[i] + 64);
-        }
-        else if (str[i] > 127 && str[i] < 160){
-            printf ("^%c",str[i] - 64);
         }
         else if (str[i] == 127){
             printf ("%c", str[i] - 64);
