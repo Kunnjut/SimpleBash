@@ -15,35 +15,34 @@ int output_bt (int argc, char *argv[0]);
 int output_without (int argc, char *argv[0]);
 
 int check_fl (int argc, char *argv[0]) {
-    int check;
     if ((argc > 2) && (strcmp(argv[1], "-n")  == 0)){
-        check = 1;
+        output_n (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-b")  == 0)){
-        check = 2;
+        output_b (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-s")  == 0)){
-        check = 3;
+        output_s (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-v")  == 0)){
-        check = 4;
+        output_v (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-e")  == 0)){
-        check = 5;
+        output_e (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-t")  == 0)){
-        check = 6;
+        output_t (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-E")  == 0)){
-        check = 7;
+        output_be (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-T")  == 0)){
-        check = 8;
+        output_bt (argc, &argv[0]);
     }
     else{
-        check = 0;
+        output_without (argc, &argv[0]);
     }
-    return check;
+    return 0;
 }
 
 int output_n (int argc, char *argv[0]){
