@@ -15,13 +15,13 @@ int output_bt (int argc, char *argv[0]);
 int output_without (int argc, char *argv[0]);
 
 int check_fl (int argc, char *argv[0]) {
-    if ((argc > 2) && (strcmp(argv[1], "-n")  == 0)){
+    if ((argc > 2) && ((strcmp(argv[1], "-n")  == 0) || (strcmp(argv[1], "--number")  == 0))){
         output_n (argc, &argv[0]);
     }
-    else if ((argc > 2) && (strcmp(argv[1], "-b")  == 0)){
+    else if ((argc > 2) && ((strcmp(argv[1], "-b")  == 0) || (strcmp(argv[1], "--number-nonblank")  == 0))){
         output_b (argc, &argv[0]);
     }
-    else if ((argc > 2) && (strcmp(argv[1], "-s")  == 0)){
+    else if ((argc > 2) && ((strcmp(argv[1], "-s")  == 0) || (strcmp(argv[1], "--squeeze-blank")  == 0))){
         output_s (argc, &argv[0]);
     }
     else if ((argc > 2) && (strcmp(argv[1], "-v")  == 0)){
