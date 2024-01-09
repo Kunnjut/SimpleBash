@@ -47,12 +47,12 @@ int check_fl (int argc, char *argv[0]) {
 
 int output_n (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0;
     myfile = fopen(argv[argc - 1], "r");
         i = 1;
-        while (fgets (str, 50, myfile) != NULL){
-            printf ("%6d        %s",i, str);
+        while (fgets (str, 100, myfile) != NULL){
+            printf ("%6d  %s",i, str);
             i++;
     }
     fclose (myfile);
@@ -61,7 +61,7 @@ int output_n (int argc, char *argv[0]){
 
 int output_b (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0, k = 1;
     myfile = fopen(argv[argc - 1], "r");
         while ((str[i] = fgetc(myfile))) {
@@ -98,10 +98,10 @@ int output_b (int argc, char *argv[0]){
 
 int output_without (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0;
     myfile = fopen(argv[argc - 1], "r");
-        while (fgets (str, 50, myfile) != NULL){
+        while (fgets (str, 100, myfile) != NULL){
             printf ("%s", str);
             i++;
         }
@@ -111,7 +111,7 @@ int output_without (int argc, char *argv[0]){
 
 int output_s (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0, k = 1;
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
@@ -151,7 +151,7 @@ int output_s (int argc, char *argv[0]){
 
 int output_v (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0;
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
@@ -183,7 +183,7 @@ int output_v (int argc, char *argv[0]){
 
 int output_e (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0;
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
@@ -215,7 +215,7 @@ int output_e (int argc, char *argv[0]){
 
 int output_t (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0;
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
@@ -247,7 +247,7 @@ int output_t (int argc, char *argv[0]){
 
 int output_be (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0;
     myfile = fopen(argv[argc - 1], "r");
         while ((str[i] = fgetc(myfile))) {
@@ -282,7 +282,7 @@ int output_be (int argc, char *argv[0]){
 
 int output_bt (int argc, char *argv[0]){
     FILE *myfile;
-    char str[51];
+    char str[101];
     int i = 0;
     myfile = fopen(argv[argc - 1], "r");
     while ((str[i] = fgetc(myfile))) {
