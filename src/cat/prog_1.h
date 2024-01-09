@@ -52,7 +52,7 @@ int output_n (int argc, char *argv[0]){
     myfile = fopen(argv[argc - 1], "r");
         i = 1;
         while (fgets (str, 50, myfile) != NULL){
-            printf ("     %d  %s",i, str);
+            printf ("%6d        %s",i, str);
             i++;
     }
     fclose (myfile);
