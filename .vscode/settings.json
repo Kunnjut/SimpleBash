@@ -4,6 +4,11 @@
         "regex.h": "c",
         "stdio.h": "c",
         "grep.h": "c",
-        "getopt.h": "c"
+        "getopt.h": "c",
+        "*.tcc": "c",
+        "string": "c",
+        "istream": "c",
+        "streambuf": "c",
+        "stdlib.h": "c"
     }
 }
