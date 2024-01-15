@@ -83,7 +83,7 @@ void output_line (char* line, int n) {
 void processFile (arguments arg, char* path, regex_t* reg) {
     FILE* f = fopen (path, "r");
     if (f == NULL) {
-        perror (path);
+        if (!arg.s) perror (path);
         exit(1);
     }
     char* line = NULL;
@@ -92,7 +92,8 @@ void processFile (arguments arg, char* path, regex_t* reg) {
     read = getline (&line, &memlen, f);
     //??
     while (read != -1) {
-        output_line(line, read);
+        int result = regexec (reg, line, 0, NULL, 0);
+        if (result == 0) output_line(line, read);
         read = getline (&line, &memlen, f);
         //??
     }
