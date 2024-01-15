@@ -39,6 +39,9 @@ int check_fl (int argc, char *argv[0]) {
     else if ((argc > 2) && (strcmp(argv[1], "-T")  == 0)){
         output_bt (argc, &argv[0]);
     }
+    else if (argc > 2) {
+        printf ("invalid opton\n");
+    }
     else{
         output_without (argc, &argv[0]);
     }
