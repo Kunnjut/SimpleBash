@@ -110,7 +110,6 @@ void processFile (arguments arg, char* path, regex_t* reg) {
     if (arg.c && !arg.l) printf ("%d\n", c);
     if (arg.l && for_l == 1){ 
         printf ("%s\n", path);
-        for_l = 0;
     }
     fclose(f);
 }
