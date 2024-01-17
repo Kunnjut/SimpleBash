@@ -36,7 +36,7 @@ arguments arguments_parser (int argc, char* argv[]){
                 arg.pattern = optarg;
                 break;
             case 'i':
-                //???
+                arg.i = REG_ICASE;
                 break;
             case 'v':
                 arg.v = 1;
@@ -106,13 +106,13 @@ void processFile (arguments arg, char* path, regex_t* reg) {
 
 void output (arguments arg, int argc, char** argv) {
     regex_t re;
-    int error = regcomp(&re, arg.pattern, 0);
+    int error = regcomp(&re, arg.pattern, arg.i);
     if (error) perror("Error");
     for (int i = optind; i < argc; i++){
         processFile (arg, argv[i], &re);
     }
 }
-
+// -i
 int main (int argc, char** argv) {
     arguments arg = arguments_parser(argc, argv);
     output (arg, argc, argv);
