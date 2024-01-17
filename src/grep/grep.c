@@ -93,7 +93,9 @@ void processFile (arguments arg, char* path, regex_t* reg) {
     //??
     while (read != -1) {
         int result = regexec (reg, line, 0, NULL, 0);
-        if (result == 0) output_line(line, read);
+        if ((result == 0 && !arg.v) || (arg.v && result != 0)) {
+            output_line(line, read);
+        }
         read = getline (&line, &memlen, f);
         //??
     }
