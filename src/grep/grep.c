@@ -89,15 +89,17 @@ void processFile (arguments arg, char* path, regex_t* reg) {
     char* line = NULL;
     size_t memlen = 0;
     int read = 0;
+    int line_count = 1;
     read = getline (&line, &memlen, f);
     //??
     while (read != -1) {
         int result = regexec (reg, line, 0, NULL, 0);
         if ((result == 0 && !arg.v) || (arg.v && result != 0)) {
+            if (arg.n) printf ("%d:", line_count);                // Выводит номер строки в которой нашел совпадения (-n)
             output_line(line, read);
         }
         read = getline (&line, &memlen, f);
-        //??
+        line_count++;
     }
     free (line);
     //?
