@@ -9,6 +9,27 @@
         "string": "c",
         "istream": "c",
         "streambuf": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "array": "c",
+        "atomic": "c",
+        "cstddef": "c",
+        "cstdio": "c",
+        "cwchar": "c",
+        "vector": "c",
+        "functional": "c",
+        "memory": "c",
+        "memory_resource": "c",
+        "optional": "c",
+        "string_view": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "random": "c",
+        "fstream": "c",
+        "initializer_list": "c",
+        "new": "c",
+        "stdexcept": "c",
+        "system_error": "c",
+        "typeinfo": "c",
+        "utility": "c"
     }
 }
