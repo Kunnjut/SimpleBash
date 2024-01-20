@@ -6,9 +6,13 @@
 #include "grep.h"
 
 
-/*void pattern_add (arguments* arg, char* pattern){
-
-}*/
+void pattern_add (arguments* arg, char* pattern){
+    if (arg->len_pattern != 0) {
+        strcat(arg->pattern + arg->len_pattern, "|");
+        arg->len_pattern++;
+    }
+    arg->len_pattern += sprintf(arg->pattern + arg->len_pattern, "(%s)", pattern);
+}
 
 void add_reg_from_file (arguments* arg, char* filepath) {
     FILE* f = fopen(filepath, "r");
@@ -33,7 +37,7 @@ arguments arguments_parser (int argc, char* argv[]){
         switch (opt) {
             case 'e':
                 arg.e = 1;
-                arg.pattern = optarg;
+                pattern_add( &arg, optarg);
                 break;
             case 'i':
                 arg.i = REG_ICASE;
@@ -66,8 +70,8 @@ arguments arguments_parser (int argc, char* argv[]){
                 break;
         }
     }
-    if (arg.pattern == NULL){
-        arg.pattern = argv[optind];
+    if (arg.len_pattern == 0) {
+        pattern_add (&arg, argv[optind]);
         optind++;
     }
     if (argc - optind == 1) {
@@ -80,7 +84,7 @@ void output_line (char* line, int n) {
     for (int i = 0; i < n ; i++){
         putchar (line[i]);
     }
-    //?
+    if (line[n-1] != '\n') printf ("\n");  // Добавляет переход на новую строку если ее нет
 }
 
 void processFile (arguments arg, char* path, regex_t* reg) {
@@ -124,7 +128,7 @@ void processFile (arguments arg, char* path, regex_t* reg) {
 
 void output (arguments arg, int argc, char** argv) {
     regex_t re;
-    int error = regcomp(&re, arg.pattern, arg.i);
+    int error = regcomp(&re, arg.pattern, REG_EXTENDED | arg.i);
     if (error) perror("Error");
     for (int i = optind; i < argc; i++){
         processFile (arg, argv[i], &re);
