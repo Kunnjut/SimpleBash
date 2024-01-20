@@ -24,6 +24,8 @@ void add_reg_from_file (arguments* arg, char* filepath) {
     size_t memlen = 0;
     int read = getline(&line, &memlen, f);
     while (read != -1) {
+        if (line[read - 1] == '\n') line[read - 1] == '\0';  // Убираем символ перевода строки что бы он считался как паттерн
+        pattern_add(arg, line);
         read = getline(&line, &memlen, f);
     }
     free (line);
@@ -63,7 +65,7 @@ arguments arguments_parser (int argc, char* argv[]){
                 break;
             case 'f':
                 arg.f = 1;
-                //???
+                add_reg_from_file (&arg, optarg);
                 break;
             case 'o':
                 arg.o = 1;
