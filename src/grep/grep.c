@@ -70,6 +70,9 @@ arguments arguments_parser (int argc, char* argv[]){
         arg.pattern = argv[optind];
         optind++;
     }
+    if (argc - optind == 1) {
+        arg.h = 1;
+    }
     return arg;
 }
 
@@ -107,7 +110,10 @@ void processFile (arguments arg, char* path, regex_t* reg) {
         line_count++;
     }
     free (line);
-    if (arg.c && !arg.l) printf ("%d\n", c);
+    if (arg.c && !arg.l) {
+        if (!arg.h) printf ("%s:", path);   // Путь до файла в котором найдено совпадение
+        printf ("%d\n", c);                 // Вывод числа совпадений
+    }
     if (arg.l && for_l == 1){ 
         printf ("%s\n", path);
     }
