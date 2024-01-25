@@ -89,6 +89,26 @@ void output_line (char* line, int n) {
     if (line[n-1] != '\n') printf ("\n");  // Добавляет переход на новую строку если ее нет
 }
 
+void print_match (regex_t *re, char *line){
+    regmatch_t match;
+    int offset = 0;
+    while (1){
+        int result = regexec(re, line + offset, 1, &match, 0);
+        if (result != 0)
+        {
+            break;
+        }
+        
+        for(int i = match.rm_so; i < match.rm_eo; i++){      // so - начало совпадения, eo - конец
+            putchar(line[i]);
+        }
+        putchar ('\n');
+        offset += match.rm_eo;
+    }
+
+
+}
+
 void processFile (arguments arg, char* path, regex_t* reg) {
     FILE* f = fopen (path, "r");
     if (f == NULL) {
@@ -108,7 +128,10 @@ void processFile (arguments arg, char* path, regex_t* reg) {
             for_l = 1;
             if (!arg.c && !arg.l){
                 if (arg.n) printf ("%d:", line_count);                // Выводит номер строки в которой нашел совпадения (-n)
-                output_line(line, read);
+                if (arg.o) {
+                    print_match(reg, line);
+                } 
+                else output_line(line, read);
             }
             c++;
         }
