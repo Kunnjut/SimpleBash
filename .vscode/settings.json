@@ -30,6 +30,12 @@
         "stdexcept": "c",
         "system_error": "c",
         "typeinfo": "c",
-        "utility": "c"
+        "utility": "c",
+        "algorithm": "c",
+        "iosfwd": "c",
+        "numeric": "c",
+        "ostream": "c",
+        "sstream": "c",
+        "exception": "c"
     }
 }
