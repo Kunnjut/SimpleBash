@@ -12,7 +12,7 @@ void reg_file (arguments* arg, char* filepath);
 void compreg_line (char* line, int n);
 void print_match (regex_t *re, char *line);
 void Obrabotka_File (arguments arg, char* path, regex_t* reg);
-
+int getline(char** line, size_t* lstr, FILE* f);
 
 
 int main (int argc, char** argv) {
@@ -100,7 +100,8 @@ void reg_file (arguments* arg, char* filepath) {   // Чтение паттер�
     }
     char* line = NULL;
     size_t lstr = 0;
-    int read = getline(&line, &lstr, f);
+    int read;
+    read = getline(&line, &lstr, f);
     while (read != -1) {
         if (line[read - 1] == '\n') line[read - 1] = '\0';  // Убираем символ перевода строки что бы он считался как паттерн
         pattern_add(arg, line);
