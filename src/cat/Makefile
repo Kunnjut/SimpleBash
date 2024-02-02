@@ -1,5 +1,4 @@
-SHELL := /bin/bash
-FLAG = -Wall -Werror -Wextra
+FLAG = -std=c11 -Wall -Werror -Wextra
 FILE = test.txt
 FILEA = testASCII.txt
 FILETab = top.txt
