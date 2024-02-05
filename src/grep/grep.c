@@ -81,6 +81,7 @@ void compreg (arguments arg, int argc, char** argv) {
     for (int i = optind; i < argc; i++){
         Obrabotka_File (arg, argv[i], &re);
     }
+    regfree(&re);
 }
 
 
