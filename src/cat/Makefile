@@ -37,26 +37,6 @@ tests_t:
 	./s21_cat -t $(FILETab)
 	#==============================================
 	cat -t $(FILETab)
-tests_E:
-	./s21_cat -E $(FILETab)
-	#==============================================
-	cat -E $(FILETab)
-tests_T:
-	./s21_cat -T $(FILETab)
-	#==============================================
-	cat -T $(FILETab)
-tests_number:
-	./s21_cat --number $(FILE)
-	#==============================================
-	cat --number $(FILE)
-tests_number-nonblank:
-	./s21_cat --number-nonblank $(FILE)
-	#==============================================
-	cat --number-nonblank $(FILE)
-tests_squeeze-blank:
-	./s21_cat --squeeze-blank $(FILE)
-	#==============================================
-	cat --squeeze-blank $(FILE)
 
 clean:
 	rm -rf s21_cat
