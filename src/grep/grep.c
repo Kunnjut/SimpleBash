@@ -1,5 +1,6 @@
+#define D_GNU_SOURCE
+#define _POSIX_C_SOURCE 200809L
 #include "grep.h"
-
 #include <getopt.h>
 #include <regex.h>
 #include <stdio.h>
@@ -13,7 +14,6 @@ void reg_file(arguments* arg, char* filepath);
 void compreg_line(char* line, int n);
 void print_match(regex_t* re, char* line);
 void Obrabotka_File(arguments arg, char* path, regex_t* reg);
-//int getline(char** line, size_t* lstr, FILE* f);
 
 int main(int argc, char** argv) {
   arguments arg = arguments_parser(argc, argv);
