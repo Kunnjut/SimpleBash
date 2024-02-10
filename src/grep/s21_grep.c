@@ -132,7 +132,7 @@ void print_match(regex_t* re, char* line) {
     }
     for (int i = match.rm_so; i < match.rm_eo;
          i++) {  // so - начало совпадения, eo - конец
-      putchar(line[i]);
+      putchar(line[i] + sdvig);
     }
     putchar('\n');
     sdvig += match.rm_eo;
@@ -156,8 +156,10 @@ void Obrabotka_File(arguments arg, char* path, regex_t* reg) {
     if ((result == 0 && !arg.v) || (arg.v && result != 0)) {
       for_l = 1;
       if (!arg.c && !arg.l) {
-        if (arg.n)
-          printf("%d:", number_line);  // Выводит номер строки в которой нашел
+        if (arg.n){
+          if (!arg.h && !arg.l)
+            printf("%s:", path);
+          printf("%d:", number_line);}  // Выводит номер строки в которой нашел
                                        // совпадения (-n)
         if (arg.o) {
           print_match(reg, line);

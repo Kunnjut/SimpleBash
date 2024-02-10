@@ -6,7 +6,7 @@ CHECK = 2>&1 valgrind --tool=memcheck --leak-check=yes
 all: clean s21_grep
 
 s21_grep:
-	gcc $(FLAG) grep.c -o s21_grep
+	gcc $(FLAG) s21_grep.c -o s21_grep
 
 tests_without:
 	./s21_grep Snow $(FILE)

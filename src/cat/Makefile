@@ -7,7 +7,7 @@ CHECK = 2>&1 valgrind --tool=memcheck --leak-check=yes
 all: clean s21_cat
 
 s21_cat:
-	gcc $(FLAG) cat.c -o s21_cat
+	gcc $(FLAG) s21_cat.c -o s21_cat
 
 tests_without:
 	./s21_cat $(FILE)
